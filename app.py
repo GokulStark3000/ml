@@ -4,6 +4,7 @@ from stroke import Stroke
 from obesity import Obesity
 from diabetes import Diabetes
 from hypertension import Hypertension
+import os
 
 app = Flask(__name__)
 # Enable CORS for all domains in development
@@ -78,4 +79,5 @@ def stroke():
 
 if __name__ == '__main__':
     # Run the app on 0.0.0.0 to make it accessible from other devices
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    port = int(os.environ.get('PORT', 10000))  # 10000 is the fallback default
+    app.run(host='0.0.0.0', port=port)
